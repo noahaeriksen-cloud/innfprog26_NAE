@@ -13,7 +13,6 @@
         const password = "brapassordfrfr"
         let loggedIn = false
 
-
         //IF-test som sjekker om innsendt brukernavn matcher systemet:
         if(username === "noah") {
             console.log("Brukernavn er riktig")
@@ -26,7 +25,11 @@
             loggedIn = true
             console.log(loggedIn)
         } 
-    
+
+        //Sjekk om en bruker er logget inn, og oppdater grensesnitt hvis den er det:
+        if(loggedIn) {
+            document.getElementById("loginStatus").innerHTML = "Hællæ Noah"
+        }
     </script>
 </body>
 </html>
