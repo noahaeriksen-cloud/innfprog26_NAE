@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions oppgave 1</title>
+</head>
+<body>
+    
+    <script>
+        const people = [
+            "Marius",
+            "Tore",
+            "Susanne",
+            "Monica",
+            "Arne",
+            "Zoltan",
+            "Beate"
+        ]
+
+
+        //Fungerende kode:
+        
+        function sortArray(array) {
+            //Sortere arrayen alfabetisk
+            array.sort()
+
+            //Lage en ny p-tag
+            const ptag = document.createElement("p")
+            //Fylle ptag med array, kommaseparert
+            ptag.innerHTML = array.join(", ")
+            //Skruve ut ptag til nettside
+            document.body.appendChild(ptag)
+            //Testutskrift
+            console.log(array)
+        }
+        sortArray(people)
+
+
+
+        //Første prøverunde:
+
+       //function printNameList(names, htmltag = "p") {
+           //people.sort()
+           // const element = document.createElement(htmltag)
+           // element.innerHTML = names
+           // document.body.appendChild(element)
+           // element.innerHTML = people.join(", ")
+        //}
+        //printNameList(people)
+    </script>
+</body>
+</html>
