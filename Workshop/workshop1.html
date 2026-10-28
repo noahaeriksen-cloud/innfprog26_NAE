@@ -8,36 +8,56 @@
 <body>
     <main>
         <h2>Passoedgenerator</h2>
+        <p>
+            <label for="symbol">Hvilke tegn skal du bruke</label>
+            <ul>
+                <li><input type="checkbox" name="lowerCase" id="lowerCase">Små bokstaver</input></li>
+                <li><input type="checkbox" name="upperCase" id="upperCase">Store bokstaver</input></li>
+                <li><input type="checkbox" name="numbers" id="numbers">Tall</input></li>
+                <li><input type="checkbox" name="other" id="other">Andre symboler/tegn</input></li>
+            </ul>
+        </p>
+        <p>
+            <label for="length">Hvor langth skal passordet være?</label>
+            <input type="number" id="length" name="length" placeholder="Passord Lengde" value="8">
+        </p>
         <button id="generate">Generer</button>
+        
         <p>Utskrift av Passord:</p>
         <p id="passwordOutput">Ingen passord</p>
 
-        <h2>Passoedgenerator 2</h2>
-        <button id="generate1">Generer</button>
-        <p>Utskrift av Passord:</p>
-        <p id="passwordOutput1">Ingen knapp trykket</p>
     </main>
 
     <script>
-        const trykket = "Knappen er trykket"
-
-        document.getElementById("generate1").addEventListener("click", function(event) {
-            console.log(trykket)
-            document.getElementById("passwordOutput1").innerHTML = trykket
-        })
-
         //Regler og konfigurasjon
         let generatedPassword = ""
-        const allowedSymbols = "abcdefghijklmnopqurstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ0123456789,.-_;:!#$%&/()=?§'@*¨^<>"
-        
+        const lowerCase = "abcdefghijklmnopqurstuvwxyzæøå"
+        const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"
+        const numbers = "0123456789"
+        const other = ",.-_;:!#$%&/()=?§'@*¨^<> •Ωé†µ˛¸›‹ƒ∂ß≈ç‹›‘"
+
+        document.getElementById("length").value
+
         document.getElementById("generate").addEventListener("click", function(event) {
+            //TØM PASSORD-VARIABEL FOR Å GJØRE KLAR TIL NYTT PASSORD
+            generatedPassword = ""
+            //HVILKE SYMBOLER SKAL BLI BRUKT
+            let allowedSymbols = lowerCase + upperCase + numbers + other
+            //HENTE UT HVOR LANGT PASSORDET SKAL VÆRE
+            const passwordLength = document.getElementById("length").value
+            console.log("passwordLength", passwordLength)
             //Generer ett passord
-            for(counter = 0; counter < 13; counter++) {
+            for(counter = 0; counter < passwordLength; counter++) {
                 const randomSymbols = Math.floor(Math.random() * allowedSymbols.length)
+
+                console.log(randomSymbols, allowedSymbols[randomSymbols])
+
+                generatedPassword += allowedSymbols[randomSymbols]
             }
 
             console.log(generatedPassword)
             document.getElementById("passwordOutput").innerHTML = generatedPassword
+            console.log(passwordOutput)
         })
     </script>
 </body>
